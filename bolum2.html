@@ -9,21 +9,17 @@
 </head>
 <body>
     <div id="app">
-        <h1>{{title}}</h1>
-        <!-- v-on event baglamak icin kullanilir -->
-        <input type="text" v-on:input="changeTitle">
-        <p>{{description}}</p>
+        <p>{{hello()}}</p>
     </div>
     <script>
         new Vue({
             el:'#app',
             data : {
                 title : 'Merhaba ben tarik',
-                description : 'Bu bir aciklamadir'
             },
-            methods : {
-                changeTitle(event){
-                    this.description = event.target.value;
+            methods :{
+                hello(){
+                    return this.title
                 }
             }
         });

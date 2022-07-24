@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="showAlert('tarik')">Alert Goster</button>
+        <button v-on:click="counter++">Arttir</button>
+        <button v-on:click="increaseCounter(3,$event)">Arttir</button>
+        <p>{{counter}}</p>
+        <p v-on:mousemove="updateCoords(2,$event)">Koordinatlar : {{x}} , {{y}}
+            <span v-on:mousemove.stop>BURDA ALGILAMAYACAK</span>
+        </p>
+        <p>{{message}}</p>
+        <input type="text" v-on:keyup.enter.space="showMessage">
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data : {
+                counter:0,
+                x:0,
+                y:0,
+                message:''
+
+            },
+            methods :{
+                increaseCounter(step,event) {
+                    this.counter+=event
+                },
+                showAlert(event) {
+                    alert(event)
+                },
+                updateCoords(step,event) {
+                      this.counter+=step
+                      this.x = event.clientX;
+                      this.y = event.clientY ;
+                },
+                showMessage(event){
+                    this.message = event.target.value
+                }
+            }
+        });
+    </script>
+</body>
+</html>
